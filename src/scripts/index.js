@@ -21,6 +21,7 @@ class ImageCompare {
       verticalMode: false,
       startingPoint: 50,
       fluidMode: false,
+      onSlide: undefined,
     };
 
     this.settings = Object.assign(defaults, settings);
@@ -169,6 +170,10 @@ class ImageCompare {
         this.settings.verticalMode
           ? (this.wrapper.style.height = `calc(${position}%)`)
           : (this.wrapper.style.width = `calc(${100 - position}%)`);
+      }
+
+      if (this.settings.onSlide) {
+        this.settings.onSlide(position);
       }
     }
   }
